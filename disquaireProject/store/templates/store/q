@@ -1,0 +1,15 @@
+                                         Table « public.store_album »
+  Colonne   |           Type           | Collationnement | NULL-able |               Par défaut                
+------------+--------------------------+-----------------+-----------+-----------------------------------------
+ id         | bigint                   |                 | not null  | nextval('store_album_id_seq'::regclass)
+ reference  | integer                  |                 |           | 
+ created_at | timestamp with time zone |                 | not null  | 
+ available  | boolean                  |                 | not null  | 
+ title      | character varying(200)   |                 | not null  | 
+ picture    | character varying(400)   |                 | not null  | 
+Index :
+    "store_album_pkey" PRIMARY KEY, btree (id)
+Référencé par :
+    TABLE "store_album_artists" CONSTRAINT "store_album_artists_album_id_2d0c1a8e_fk_store_album_id" FOREIGN KEY (album_id) REFERENCES store_album(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "store_booking" CONSTRAINT "store_booking_album_id_e214fb79_fk_store_album_id" FOREIGN KEY (album_id) REFERENCES store_album(id) DEFERRABLE INITIALLY DEFERRED
+
